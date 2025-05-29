@@ -17,7 +17,7 @@ async function home() {
 	localStorage.setItem("refresh_token", json.refresh)
 	
 }
-
+const login = document.querySelector('.login')
 const ws = new WebSocket(`wss://beep-me-api.onrender.com/ws/chat/testing/?token=${localStorage.getItem('access_token')}`)
 const input = document.querySelector("input")
 const send = document.querySelector(".send")
@@ -44,6 +44,7 @@ ws.onclose = () => {
 }
 //home()
 
+login.addEventListener('click', home)
 window.handlesignin = async function(response) {
 	const list = document.createElement("li")
 	list.textContent = 'login'
