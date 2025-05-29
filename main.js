@@ -1,5 +1,5 @@
-async function home(){
-	const data = await fetch('https://beep-me-api.onrender.com/api/auth/token/refresh/',{
+async function home() {
+	const data = await fetch('https://beep-me-api.onrender.com/api/auth/token/refresh/', {
 		method: 'POST',
 		headers: {
 			"Content-Type": "application/json",
@@ -7,7 +7,7 @@ async function home(){
 		},
 		body: JSON.stringify({
 			email: 'juwonchina@gmail.com',
-
+			
 		})
 	})
 	const json = await data.json()
@@ -23,10 +23,10 @@ const send = document.querySelector(".send")
 const inbox = document.querySelector("ul")
 send.addEventListener("click", () => {
 	const data = input.value
-	if(data === ''){
+	if (data === '') {
 		return
 	}
-	ws.send(JSON.stringify({"message": data}))
+	ws.send(JSON.stringify({ "message": data }))
 	input.value = ''
 })
 
@@ -37,7 +37,7 @@ ws.onmessage = (event) => {
 	inbox.appendChild(list)
 }
 
-ws.onerror = () => {inbox.textContent = 'error'}
+ws.onerror = () => { inbox.textContent = 'error' }
 ws.onclose = () => {
 	inbox.textContent = 'connection closed'
 }
@@ -55,5 +55,9 @@ window.handlesignin = async function(response) {
 	})
 	
 	const json = await data.json()
-	console.log(json)
+	for (key in json) {
+		const list = document.createElement("li")
+		list.textContent = json[key]
+		inbox.appendChild(list)
+	}
 }
