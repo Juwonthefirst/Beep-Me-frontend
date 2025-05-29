@@ -19,7 +19,7 @@ async function home() {
 }
 const login = document.querySelector('.login')
 const ws = new WebSocket(`wss://beep-me-api.onrender.com/ws/chat/testing/?token=${localStorage.getItem('access_token')}`)
-const input = document.querySelector("input")
+const input = document.querySelector("#help")
 const send = document.querySelector(".send")
 const inbox = document.querySelector("ul")
 send.addEventListener("click", () => {
@@ -45,24 +45,3 @@ ws.onclose = () => {
 //home()
 
 login.addEventListener('click', home)
-window.handlesignin = async function(response) {
-	const list = document.createElement("li")
-	list.textContent = 'login'
-	inbox.appendChild(list)
-	const data = await fetch('https://beep-me-api.onrender.com/api/auth/social/google/', {
-		method: 'POST',
-		headers: {
-			"Content-Type": 'application/json'
-		},
-		body: JSON.stringify({
-			access_token: response.credential
-		})
-	})
-	
-	const json = await data.json()
-	for (key in json) {
-		const list = document.createElement("li")
-		list.textContent = json[key]
-		inbox.appendChild(list)
-	}
-}
