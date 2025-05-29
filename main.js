@@ -1,5 +1,5 @@
 async function home() {
-	const data = await fetch('https://beep-me-api.onrender.com/api/auth/token/refresh/', {
+	const data = await fetch('https://beep-me-api.onrender.com/api/auth/login/', {
 		method: 'POST',
 		headers: {
 			"Content-Type": "application/json",
@@ -7,6 +7,7 @@ async function home() {
 		},
 		body: JSON.stringify({
 			email: 'juwonchina@gmail.com',
+			password: "application"
 			
 		})
 	})
