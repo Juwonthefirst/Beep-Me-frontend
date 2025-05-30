@@ -13,11 +13,12 @@
           "Content-Type": 'application/json'
         },
         body: JSON.stringify({
-          access_token: response.credential
+          token: response.credential
         })
       })
-      
       const json = await data.json()
+      localStorage.setItem("access_token", json.access)
+	    localStorage.setItem("refresh_token", json.refresh)
       console.log(json)
     }
   </script>
@@ -38,12 +39,11 @@
   <ul>
     
   </ul>
-  <div id="g_id_onload" data-client_id="333616956580-ehlrhiisjvgupkm594kettrev856vdtu.apps.googleusercontent.com" data-context="signin" data-callback="handlesignin" data-auto_prompt="false">
+  <div id="g_id_onload" data-client_id="333616956580-ehlrhiisjvgupkm594kettrev856vdtu.apps.googleusercontent.com" data-context="signin" data-callback="handlesignin" data-auto_prompt="true">
   </div>
   
-  <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline" data-text="sign_in_with" data-size="large">
+  <div class="g_id_signin" data-type="standard" data-shape="circular" data-theme="outline" data-text="sign_in_with" data-size="large">
   </div>
-  <button class="login">login</button>
 </body>
 
 </html>

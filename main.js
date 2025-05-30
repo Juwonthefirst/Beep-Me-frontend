@@ -19,7 +19,7 @@ async function home() {
 }
 const login = document.querySelector('.login')
 const ws = new WebSocket(`wss://beep-me-api.onrender.com/ws/chat/testing/?token=${localStorage.getItem('access_token')}`)
-const input = document.querySelector("#help")
+const input = document.querySelector("#help")  
 const send = document.querySelector(".send")
 const inbox = document.querySelector("ul")
 send.addEventListener("click", () => {
