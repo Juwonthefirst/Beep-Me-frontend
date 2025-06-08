@@ -1,13 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    async function handlesignin(response) {
+      const data = await fetch('https://beep-me-api.onrender.com/api/auth/social/google/', {
+        method: 'POST',
+        headers: {
+          "Content-Type": 'application/json'
+        },
+        body: JSON.stringify({
+          token: response.credential
+        })
+      })
+      const json = await data.json()
+      localStorage.setItem("access_token", json.access)
+	    localStorage.setItem("refresh_token", json.refresh)
+      console.log(json)
+    }
+  </script>
+  <script type="module" src="main.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <title>HTML</title>
+  
+  <!-- HTML -->
+  
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <input type="text" name="" id="help" value="" />
+  <button class="send" disabled>send</button>
+  <ul>
+    
+  </ul>
+  <div id="g_id_onload" data-client_id="333616956580-ehlrhiisjvgupkm594kettrev856vdtu.apps.googleusercontent.com" data-context="signin" data-callback="handlesignin" data-auto_prompt="false">
+  </div>
+  
+  <div class="g_id_signin" data-type="standard" data-shape="circular" data-theme="outline" data-text="sign_in_with" data-size="large">
+  </div>
+  <button id="help">login</button>
+</body>
+
 </html>
